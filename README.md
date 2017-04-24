@@ -1,9 +1,9 @@
-# Replication code: "Bias and variance in the social structure of gender"
+## Replication code: "Bias and variance in the social structure of gender"
 
-## Data
+### Data
 
-## Documentation
+### Documentation
 
-## Authors
-* Johan Ugander, jugander@stanford.edu
+### Authors
 * Kristen M. Altenburger, kaltenb@stanford.edu
+* Johan Ugander, jugander@stanford.edu
