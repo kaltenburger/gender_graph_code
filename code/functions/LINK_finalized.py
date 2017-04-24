@@ -26,11 +26,6 @@ def LINK(num_unlabeled, membership_y, feature_x, clf, num_iter, cv_setup=None):
             clf.fit(feature_x[train], np.ravel(membership_y[train]))
             pred = clf.predict(feature_x[test])
             prob = clf.predict_proba(feature_x[test])
-            print prob
-            print metrics.roc_auc_score(label_binarize(membership_y[test],np.unique(membership_y)),
-                                        prob[:,1],average='weighted')
-            print metrics.roc_auc_score(label_binarize(membership_y[test],np.unique(membership_y)),
-                                                                    prob[:,1]-prob[:,0],average='weighted')
             accuracy.append(metrics.accuracy_score(membership_y[test], pred,  normalize = True))
             
             # auc scores

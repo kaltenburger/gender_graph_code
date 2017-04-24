@@ -1,12 +1,12 @@
 from __future__ import division
 
 ## 4/24/2017
-## about: function to create adjacency matrix -- with option of whether to create self-loops by setting diagonal==1; pre-processing: if there is >1 connected component -- we work with largest connected one.
+## about: function to create adjacency matrix for UNDIRECTED networks -- with option of whether to create self-loops by setting diagonal==1; pre-processing: if there is >1 connected component -- we work with largest connected one.
 ## returns: nxn symmetric matrix -- since ZGL requires symmetric matrices; and nx1 vector of attributes
 
 
 ## workflow:
-##  1) subset to largest connected component, resulting in either undirect or directed graph version depending on input
+##  1) subset to largest connected component
 ##  2) remove nodes with NA labels
 ##  3) drop nodes with degree == 0.
 
@@ -33,11 +33,6 @@ def create_adj_membership(graph, dictionary,  val_to_drop, delete_na_cols, diago
             y_vector = np.array(nx.get_node_attributes(largest_cc_subgraph, attribute).values())
             keys = np.array(range(len(np.array(nx.get_node_attributes(largest_cc_subgraph, attribute).keys())))) ## update keys
     
-    ## create in-link directed network
-    ## y_vector stays same; keys stay same
-    if directed_type == 'in':
-        adj_matrix_input = nx.adj_matrix(graph).todense().T
-
 
     ## function setting to permit self-loops
     if diagonal == 1:
@@ -53,42 +48,13 @@ def create_adj_membership(graph, dictionary,  val_to_drop, delete_na_cols, diago
 
     A_final = np.copy(adj_matrix_input)
 
-    ## remove degree == 0 nodes -- handle in-links separately
+    ## undirected: remove degree == 0 nodes
     if np.sum((np.sum(A_final,1)==0)+0)>0 and directed_type != 'in' and directed_type != 'out':
         subset_training_test_deg_0 = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,1)!=0).ravel()]
         A_cv = A_final[np.array(subset_training_test_deg_0),:] # remove as row
         A_cv = A_cv[:,np.array(subset_training_test_deg_0)] # remove as column
         y_vector = y_vector[np.array(subset_training_test_deg_0)]
         A_final = np.copy(A_cv) # only drop NA nodes as rows and NOT as columns
-
-
-    if directed_type == 'in' or directed_type == 'out':
-        ## iteratively remove degree = 0 nodes
-        degree_0 = 1
-        while degree_0 > 0:
-            subset_training_test_deg_0_a = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,1)==0).ravel()]
-            subset_training_test_deg_0_b = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,0)==0).ravel()]
-            subset_training_test_deg_0 = np.unique(np.union1d(subset_training_test_deg_0_a,
-                                                    subset_training_test_deg_0_b))
-            if len(subset_training_test_deg_0) > 0:
-                subset_training_test_deg_0_a = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,1)!=0).ravel()]
-                subset_training_test_deg_0_b = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,0)!=0).ravel()]
-                subset_training_test_deg_0 = np.unique(np.intersect1d(subset_training_test_deg_0_a,
-                                                              subset_training_test_deg_0_b))
-                
-                A_final = A_final[np.array(subset_training_test_deg_0),:] # remove as row
-                A_final = A_final[:,np.array(subset_training_test_deg_0)] # remove as column
-                y_vector = y_vector[np.array(subset_training_test_deg_0)]
-                subset_training_test_deg_0_a = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,1)==0).ravel()]
-                subset_training_test_deg_0_b = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,0)==0).ravel()]
-                subset_training_test_deg_0 = np.unique(np.union1d(subset_training_test_deg_0_a,
-                                                          subset_training_test_deg_0_b))
-                degree_0 = len(subset_training_test_deg_0)
-            else:
-                degree_0 = 0
-
-    if directed_type == 'both': ## ie adj matrix that concatenates in- and out-links
-        A_final = np.hstack((A_final,A_final.T))
 
     return(np.array(y_vector), np.matrix(A_final))
 
