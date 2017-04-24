@@ -1,10 +1,10 @@
 from __future__ import division
+import os
 
 ## 4/24/2017
 ## about: compute homophily/monophily across FB100 dataset
 
-folder_directory = '/home/kaltenb/gender-graph/code/pnas_code' # main folder directory on SOAL
-import os
+folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter local main folder
 os.chdir(folder_directory)
 execfile('python_libraries.py')
 execfile('create_adjacency_matrix.py')
@@ -57,20 +57,14 @@ if __name__=="__main__":
                 
                 ## Descriptive Statistics on Raw, Original Data
                 adj_matrix_tmp, metadata = parse_fb100_mat_file(input_file)
-
                 gender_y_tmp = metadata[:,1] #gender
-                #year_y_tmp = metadata[:,5] #year
-                
                 gender_dict = create_dict(range(len(gender_y_tmp)), gender_y_tmp)
-                #year_dict = create_dict(range(len(year_y_tmp)), year_y_tmp)
-                
-                
                 raw_gender_F = np.sum((gender_y_tmp==1)+0)
                 raw_gender_M = np.sum((gender_y_tmp==2)+0)
                 raw_gender_unknown = np.sum((gender_y_tmp==0)+0)
   
                 ## Compute Homophily/Monophily on Same Data Object Used for Prediction Setup
-                # create corresponding y-/adj- objects
+                ## create corresponding y-/adj- objects
                 (gender_y, adj_matrix_gender) = create_adj_membership(nx.from_scipy_sparse_matrix(adj_matrix_tmp),
                                                                       gender_dict,  # gender dictionary
                                                                       0,            # we drop nodes with gender_label = 0, missing
@@ -130,8 +124,6 @@ if __name__=="__main__":
                 obs_monophily_F = np.float(monophily_gender[0])  # F - important assumes F label < M label
                 obs_monophily_M = np.float(monophily_gender[1]) # M - important assumes M label > F label
                 
-                #print block_size_gender[0]/(block_size_gender[0]+block_size_gender[1])
-
                 chi_square_p_value_gender = compute_chi_square_statistic(np.matrix(adj_matrix_gender), np.array(gender_y))
                 chi_square_p_value_F = np.float(chi_square_p_value_gender[0])
                 chi_square_p_value_M = np.float(chi_square_p_value_gender[1])

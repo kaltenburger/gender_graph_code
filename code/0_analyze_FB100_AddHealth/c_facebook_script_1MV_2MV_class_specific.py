@@ -1,9 +1,11 @@
+from __future__ import division
+import os
+
 ## 4/24/2017
 ## about: compute 1-hop, 2-hop MV inference results when 50% of network is labeled
 
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter local main folder
 
-import os
 os.chdir(folder_directory)
 execfile('python_libraries.py')
 execfile('create_adjacency_matrix.py')
@@ -43,7 +45,7 @@ if __name__=="__main__":
         if f.endswith(args.file_ext):
             tag = f.replace(args.file_ext, '')
             j=j+1
-            if tag=='Amherst41':
+            if (tag!='schools') :
                 print "Processing %s..." % tag
                 input_file = path_join(args.input_dir, f)
                 
@@ -55,7 +57,7 @@ if __name__=="__main__":
                 gender_dict = create_dict(range(len(gender_y_tmp)), gender_y_tmp)
   
                 ## Compute Homophily/Monophily on Same Data Object Used for Prediction Setup
-                # create corresponding y-/adj- objects
+                ## create corresponding y-/adj- objects
                 (gender_y, adj_matrix_gender) = create_adj_membership(nx.from_scipy_sparse_matrix(adj_matrix_tmp),
                                                                       gender_dict,  # gender dictionary
                                                                       0,            # we drop nodes with gender_label = 0, missing
