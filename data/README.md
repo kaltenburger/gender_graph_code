@@ -1,5 +1,4 @@
-4/24/2017
-placeholder folder for data
+About. This is a placeholder folder for data.
 
 Data availability. The Facebook100 (FB100) network dataset 
 is publicly available from the Internet Archive at https://archive.org/details/oxford-2005-facebook-matrix
