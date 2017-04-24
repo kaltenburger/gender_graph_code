@@ -1,23 +1,8 @@
 from __future__ import division
 
-# edited: 2/6/2017 (want confidence intervals on \beta0)
-# originally: 12/17/2016
-# KM Altenburger
+## 4/24/2017
+## about: compute homophily/monophily across FB100 dataset
 
-# across FB100 - Wellesley/Smith/Vassar for the:
-# a) full network and b) subsetted to largest connected component
-# compute descriptive stats, homophily, monophily metrics
-
-# Homophily = E(d_F/d) for F and E(d_M/d) for M
-# Monophily = Var(d_F/d) for F and Var(d_M/d) for M
-
-## a) run on soal: python facebook_script_homophily_monophily.py -i='/home/kaltenb/gender-graph/data' -o='.'
-## a) run locally: cd Dropbox/gender_graph_data/manuscript/pnas/pnas_code/; python facebook_script_homophily_monophily.py -i='/Users/kristen/Dropbox/gender_graph_data/manuscript/code/fb_processing/data' -o='.'
-
-
-## b) how to move file from soal to corn: starting on corn - scp soal-1.stanford.edu:/home/kaltenb/gender-graph/code/pnas_output_data/facebook_homophily_monophily_output_updated.csv ~
-
-#folder_directory = '/Users/kristen/Dropbox/gender_graph_data/manuscript/pnas/pnas_code' # enter main folder directory
 folder_directory = '/home/kaltenb/gender-graph/code/pnas_code' # main folder directory on SOAL
 import os
 os.chdir(folder_directory)
@@ -52,8 +37,6 @@ if __name__=="__main__":
                       'cc_F_count', 'cc_M_count', 'ratio_F',
                       'cc_average_degree_F', 'cc_average_degree_M',
                       'cc_homophily_F', 'cc_homophily_M',
-                      #'cc_homophily_p_value_glm_F','cc_homophily_p_value_glm_M',
-                      #'cc_homophily_p_value_dispmod_glm_F','cc_homophily_p_value_dispmod_glm_M',
                       'cc_homophily_conf_int_l_99_F','cc_homophily_conf_int_u_99_F', ## 99% interval - F
                       'cc_homophily_conf_int_l_99_M','cc_homophily_conf_int_u_99_M', ## .. - M
                       'cc_homophily_conf_int_l_99_9_F','cc_homophily_conf_int_u_99_9_F', ## 99.9% interval - F
@@ -67,8 +50,7 @@ if __name__=="__main__":
         if f.endswith(args.file_ext):
             tag = f.replace(args.file_ext, '')
             j=j+1
-            if (tag!='schools') :#and tag=='Amherst41': #and j<=4:# and tag=='Amherst41': #j<=4:
-                #if tag=='American75':#(tag!='schools') and j<=2: # and (tag!='Wellesley22') and (tag!='Smith60') and (tag!='Vassar85'):#and j<=2:
+            if (tag!='schools') :
                 print "Processing %s..." % tag
                 input_file = path_join(args.input_dir, f)
                 
@@ -133,13 +115,6 @@ if __name__=="__main__":
                 cc_homophily_conf_int_l_99_9_M = homophily_significance[:,1][0]
                 cc_homophily_conf_int_u_99_9_M = homophily_significance[:,1][1]
                 
-        
-                # previous
-                #cc_homophily_p_value_F_glm = homophily_significance[:,0][0]
-                #cc_homophily_p_value_F_glm_dispmod = homophily_significance[:,0][1]
-                #cc_homophily_p_value_M_glm = homophily_significance[:,1][0]
-                #cc_homophily_p_value_M_glm_dispmod = homophily_significance[:,1][1]
-
 
                 b0_temp = np.exp(monophily_index_overdispersion_Williams_with_intercept(np.matrix(adj_matrix_gender), np.array(gender_y)))
                 #print b0_temp
@@ -168,10 +143,6 @@ if __name__=="__main__":
                                   cc_homophily_conf_int_l_99_M,cc_homophily_conf_int_u_99_M,
                                   cc_homophily_conf_int_l_99_9_F,cc_homophily_conf_int_u_99_9_F,
                                   cc_homophily_conf_int_l_99_9_M,cc_homophily_conf_int_u_99_9_M,
-                                  #cc_homophily_p_value_F_glm_2_5, cc_homophily_p_value_F_glm_97_5,
-                                  #cc_homophily_p_value_M_glm_2_5, cc_homophily_p_value_M_glm_97_5,
-                                  #cc_homophily_p_value_F_glm,cc_homophily_p_value_M_glm,
-                                  #cc_homophily_p_value_F_glm_dispmod, cc_homophily_p_value_M_glm_dispmod,
                                   b0_glm_F,b0_dispmod_glm_F, b0_glm_M, b0_dispmod_glm_M,
                                   obs_monophily_F,obs_monophily_M,
                                   chi_square_p_value_F, chi_square_p_value_M))

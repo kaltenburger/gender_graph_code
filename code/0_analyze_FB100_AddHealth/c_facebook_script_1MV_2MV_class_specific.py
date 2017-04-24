@@ -1,5 +1,5 @@
 ## 4/24/2017
-## about: compute 1-hop, 2-hop MV inference results when 50% of netwokr is labeled
+## about: compute 1-hop, 2-hop MV inference results when 50% of network is labeled
 
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter local main folder
 
