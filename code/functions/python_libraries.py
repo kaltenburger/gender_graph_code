@@ -1,7 +1,5 @@
-# 12/5/2016
-# KM Altenburger
-# relevant python libraries needed to run code
-
+# 4/14/2017
+# about: relevant python libraries needed to run code
 from __future__ import division
 import argparse
 from collections import Counter
