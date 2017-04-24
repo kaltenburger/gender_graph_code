@@ -22,8 +22,6 @@ def create_adj_membership(graph, dictionary,  val_to_drop, delete_na_cols, diago
         return
 
 
-    ## First, we subset to largest connected component
-
     ## create undirected network
     ## subset to nodes only in largest connected component
     if directed_type == None:
@@ -40,25 +38,6 @@ def create_adj_membership(graph, dictionary,  val_to_drop, delete_na_cols, diago
     if directed_type == 'in':
         adj_matrix_input = nx.adj_matrix(graph).todense().T
 
-
-
-    ## create graph where a link exists if there's an in- or out- link; and restrict to mutual links; largest connected component
-    if directed_type == 'any1':
-        ## elementwise addition -- include links that are EITHER in- OR out-
-        adj_matrix_input_temp = (nx.adj_matrix(graph).todense()) + (nx.adj_matrix(graph).todense().T)
-        adj_matrix_input = (adj_matrix_input_temp>0)+0
-        
-        # create graph from mutual in-/out-links and restrict to connected components
-        graph = nx.from_numpy_matrix(adj_matrix_input)
-        nx.set_node_attributes(graph, attribute, create_dict(keys, y_vector))
-
-
-        ## if there's more than 1 connected component
-        if nx.number_connected_components(graph) > 1:
-            largest_cc_subgraph = list(nx.connected_component_subgraphs(graph, copy=True))[0]
-            adj_matrix_input = nx.adj_matrix(largest_cc_subgraph).todense()
-            y_vector = np.array(nx.get_node_attributes(largest_cc_subgraph, attribute).values())
-            keys = np.array(range(len(np.array(nx.get_node_attributes(largest_cc_subgraph, attribute).keys())))) ## update keys
 
     ## function setting to permit self-loops
     if diagonal == 1:
@@ -84,11 +63,9 @@ def create_adj_membership(graph, dictionary,  val_to_drop, delete_na_cols, diago
 
 
     if directed_type == 'in' or directed_type == 'out':
-        ## PROBLEM HERE
-        
+        ## iteratively remove degree = 0 nodes
         degree_0 = 1
         while degree_0 > 0:
-            #print 'here'
             subset_training_test_deg_0_a = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,1)==0).ravel()]
             subset_training_test_deg_0_b = np.array(range((A_final.shape[0])))[np.array(np.sum(A_final,0)==0).ravel()]
             subset_training_test_deg_0 = np.unique(np.union1d(subset_training_test_deg_0_a,
