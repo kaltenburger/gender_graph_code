@@ -5,4 +5,5 @@
 ## Documentation
 
 ## Authors
-
+* Johan Ugander, jugander@stanford.edu
+* Kristen M. Altenburger, kaltenb@stanford.edu
