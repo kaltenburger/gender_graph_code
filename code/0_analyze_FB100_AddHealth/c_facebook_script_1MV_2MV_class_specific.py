@@ -1,19 +1,7 @@
-# 1/18/2017
-# KM Altenburger
+## 4/24/2017
+## about: compute 1-hop, 2-hop MV inference results when 50% of netwokr is labeled
 
-
-# across FB100 - Wellesley/Smith/Vassar for the:
-# a) full network and b) subsetted to largest connected component
-# compute 1hop versus 2hop results, **broken down by class**
-
-
-## a) run on soal: python facebook_script_1MV_2MV_class_specific.py -i='/home/kaltenb/gender-graph/data' -o='.'
-## a) run locally: python facebook_script_1MV_2MV_class_specific.py -i='/Users/kristen/Dropbox/gender_graph_data/manuscript/code/fb_processing/data' -o='.'
-
-## b) scp soal-1.stanford.edu:/home/kaltenb/gender-graph/code/pnas_code/facebook_output_majority_vote.csv ~
-
-folder_directory = '/Users/kristen/Dropbox/gender_graph_data/manuscript/pnas/pnas_code' # enter local main folder directory
-#folder_directory = '/home/kaltenb/gender-graph/code/pnas_code' #enter soal main folder directory
+folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter local main folder
 
 import os
 os.chdir(folder_directory)
@@ -23,7 +11,6 @@ execfile('compute_homophily.py')
 execfile('compute_monophily.py')
 execfile('parsing.py')  # Sam Way's Code
 execfile('mixing.py')   # Sam Way's Code
-execfile('LINK_finalized.py')
 execfile('majority_vote.py')
 
 
@@ -43,13 +30,12 @@ if __name__=="__main__":
     monophily_gender = []
 
     
-    file_output = open('facebook_output_majority_vote_class_specific.csv', 'wt')
+    file_output = open('../../data/facebook_output_majority_vote_class_specific.csv', 'wt')
     j =0
     writer = csv.writer(file_output)
     writer.writerow( ('school', 'percent_initially_unlabeled', '1_MV_F_mean_auc_wt', '1_MV_F_se_auc_wt', '2_MV_F_mean_auc_wt', '2_MV_F_se_auc_wt',
                       '1_MV_M_mean_auc_wt', '1_MV_M_se_auc_wt', '2_MV_M_mean_auc_wt', '2_MV_M_se_auc_wt'))
                       
-    #percent_initially_unlabelled = [0.9,0.8,0.5,0.2,0.1]
     percent_initially_unlabelled = [0.5]
     percent_initially_labelled = np.subtract(1, percent_initially_unlabelled)
 
@@ -57,7 +43,7 @@ if __name__=="__main__":
         if f.endswith(args.file_ext):
             tag = f.replace(args.file_ext, '')
             j=j+1
-            if tag=='Amherst41':#j>=0 and (tag!='schools') and (tag!='Wellesley22') and (tag!='Smith60') and (tag!='Vassar85'):#and j<=2:
+            if tag=='Amherst41':
                 print "Processing %s..." % tag
                 input_file = path_join(args.input_dir, f)
                 
@@ -80,7 +66,6 @@ if __name__=="__main__":
                 
 
 
-                print np.unique(gender_y)
                 #1-hop MV
                 (mean_accuracy_mv, se_accuracy_mv,
                  mean_micro_auc_mv_amherst,se_micro_auc_mv,

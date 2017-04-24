@@ -50,9 +50,9 @@ if __name__=="__main__":
                       'chi_square_p_value_F', 'chi_square_p_value_M'))
 
                       
-    os.chdir('/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml/')
+    os.chdir('/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml/') ## replace with file path to converted_gml
     for f in listdir(args.input_dir):
-        if f.endswith(args.file_ext):# and j<=10:#and f=='comm22.gml': #and f!='comm25.gml': #f=='comm10.gml':
+        if f.endswith(args.file_ext):
             tag = f.replace(args.file_ext, '')
             j=j+1
 

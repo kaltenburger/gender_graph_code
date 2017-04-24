@@ -63,11 +63,7 @@ if __name__=="__main__":
             id = re.findall(r'\d+', f)
             print "Processing %s..." % f
 
-            # old: undirected graph
-            #ah_graph_tmp = nx.read_gml(f)
-            #ah_graph = ah_graph_tmp.to_undirected() undirected
- 
- 
+
             # updated for directed version of graph
             ah_graph = nx.read_gml(f)
  
