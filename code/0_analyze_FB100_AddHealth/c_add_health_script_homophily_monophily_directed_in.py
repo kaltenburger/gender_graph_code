@@ -1,6 +1,6 @@
 from __future__ import division
 
-## 4/24/2017
+## 4/28/2017
 ## about: process homophily/monophily across all Add Health Schools [in-directed]
 
 
@@ -36,7 +36,6 @@ if __name__=="__main__":
     args = interface()
     homophily_gender = []
     monophily_gender = []
-
     
     file_output = open('../../data/add_health_output_in_directed_links_homophily_monophily.csv', 'wt') # change file name to directed
     j =0
