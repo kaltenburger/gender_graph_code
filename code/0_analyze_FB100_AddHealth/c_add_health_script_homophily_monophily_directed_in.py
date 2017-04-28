@@ -7,7 +7,9 @@ from __future__ import division
 ## for reference: [Male == 1; Female == 2, Unreported/Missing = 0]
 ## codings are based on: http://moreno.ss.uci.edu/data.html#adhealth
 
-## run: cd [file path for code]; python add_health_script_homophily_monophily_directed_in.py -i='FILE PATH FOR converted_gml' -o='output path'
+## how to run:
+## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
+## python c_add_health_script_homophily_monophily_directed_in.py -i='/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml' -o='/Users/kristen/Documents/gender_graph_code/data/'
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter main folder directory
 
 import os
@@ -36,7 +38,7 @@ if __name__=="__main__":
     monophily_gender = []
 
     
-    file_output = open('../pnas_output_data/add_health_output_in_directed_links_homophily_monophily.csv', 'wt') # change file name to directed
+    file_output = open('../../data/add_health_output_in_directed_links_homophily_monophily.csv', 'wt') # change file name to directed
     j =0
     writer = csv.writer(file_output)
     writer.writerow( ('school', 'raw_F_count', 'raw_M_count', 'raw_?_count',
