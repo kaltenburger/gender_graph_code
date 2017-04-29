@@ -4,6 +4,11 @@ import os
 ## 4/24/2017
 ## about: compute homophily/monophily across FB100 dataset
 
+## how to run:
+## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
+## python c_facebook_script_homophily_monophily.py -i='/Users/kristen/Dropbox/gender_graph_data/manuscript/code/fb_processing/data' -o='/Users/kristen/Documents/gender_graph_code/data/'
+
+
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter local main folder
 os.chdir(folder_directory)
 execfile('python_libraries.py')
@@ -30,7 +35,7 @@ if __name__=="__main__":
     homophily_gender = []
     monophily_gender = []
     
-    file_output = open('../pnas_output_data/facebook_homophily_monophily_output_updated.csv', 'wt')
+    file_output = open('../../data/facebook_homophily_monophily_output_updated.csv', 'wt')
     j =0
     writer = csv.writer(file_output)
     writer.writerow( ('school', 'raw_F_count', 'raw_M_count', 'raw_?_count',
