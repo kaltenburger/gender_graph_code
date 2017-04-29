@@ -44,8 +44,8 @@ if __name__=="__main__":
                       'cc_F_count', 'cc_M_count', 'ratio_F',
                       'cc_average_degree_F', 'cc_average_degree_M','cc_max_deg_F','cc_max_deg_M',
                       'cc_homophily_F', 'cc_homophily_M',
-                      'cc_homophily_p_value_glm_F','cc_homophily_p_value_glm_M',
-                      'cc_homophily_p_value_dispmod_glm_F','cc_homophily_p_value_dispmod_glm_M',
+                      #'cc_homophily_p_value_glm_F','cc_homophily_p_value_glm_M',
+                      #'cc_homophily_p_value_dispmod_glm_F','cc_homophily_p_value_dispmod_glm_M',
                       'b0_glm_F','b0_dispmod_glm_F', 'b0_glm_M','b0_dispmod_glm_M',
                       'cc_monophily_F', 'cc_monophily_M',
                       'chi_square_p_value_F', 'chi_square_p_value_M'))

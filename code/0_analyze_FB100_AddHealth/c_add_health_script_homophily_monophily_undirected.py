@@ -7,7 +7,9 @@ from __future__ import division
 ## for reference: [Male == 1; Female == 2, Unreported/Missing = 0]
 ## codings are based on: http://moreno.ss.uci.edu/data.html#adhealth
 
-## run: cd [file path for code]; python add_health_script_homophily_monophily_directed_in.py -i='FILE PATH FOR converted_gml' -o='output path'
+## how to run:
+## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
+## python c_add_health_script_homophily_monophily_undirected.py -i='/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml' -o='/Users/kristen/Documents/gender_graph_code/data/'
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter main folder directory
 
 
@@ -45,8 +47,8 @@ if __name__=="__main__":
                       'cc_F_count', 'cc_M_count', 'ratio_F',
                       'cc_average_degree_F', 'cc_average_degree_M','cc_max_deg_F','cc_max_deg_M',
                       'cc_homophily_F', 'cc_homophily_M',
-                      'cc_homophily_p_value_glm_F','cc_homophily_p_value_glm_M',
-                      'cc_homophily_p_value_dispmod_glm_F','cc_homophily_p_value_dispmod_glm_M',
+                      #'cc_homophily_p_value_glm_F','cc_homophily_p_value_glm_M',
+                      #'cc_homophily_p_value_dispmod_glm_F','cc_homophily_p_value_dispmod_glm_M',
                       'b0_glm_F','b0_dispmod_glm_F', 'b0_glm_M','b0_dispmod_glm_M',
                       'cc_monophily_F', 'cc_monophily_M',
                       'chi_square_p_value_F', 'chi_square_p_value_M'))
@@ -55,7 +57,7 @@ if __name__=="__main__":
                       
     os.chdir('/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml/')
     for f in listdir(args.input_dir):
-        if f.endswith(args.file_ext): #and f=='comm22.gml': #and f!='comm25.gml': #f=='comm10.gml':
+        if f.endswith(args.file_ext):
             tag = f.replace(args.file_ext, '')
             j=j+1
 
