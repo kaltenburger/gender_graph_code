@@ -38,7 +38,7 @@ if __name__=="__main__":
     monophily_gender = []
 
     
-    file_output = open('../pnas_output_data/add_health_output_undirected_links_homophily_monophily.csv', 'wt')
+    file_output = open('../../data/add_health_output_undirected_links_homophily_monophily.csv', 'wt')
     j =0
     writer = csv.writer(file_output)
     writer.writerow( ('school', 'raw_F_count', 'raw_M_count', 'raw_?_count',
@@ -107,12 +107,12 @@ if __name__=="__main__":
                 obs_homophily_F = homophily_gender[1]   # F - important assumes F label < M label
                 obs_homophily_M = homophily_gender[0] # M - important assumes M label > F label
                 
-                homophily_significance = monophily_index_overdispersion_Williams_with_intercept_SE(adj_directed_gender_undirected, ah_gender_undirected)
-                cc_homophily_p_value_F_glm = homophily_significance[:,1][0]
-                cc_homophily_p_value_F_glm_dispmod = homophily_significance[:,1][1]
+                #homophily_significance = monophily_index_overdispersion_Williams_with_intercept_SE(adj_directed_gender_undirected, ah_gender_undirected)
+                #cc_homophily_p_value_F_glm = homophily_significance[:,1][0]
+                #cc_homophily_p_value_F_glm_dispmod = homophily_significance[:,1][1]
                 
-                cc_homophily_p_value_M_glm = homophily_significance[:,0][0]
-                cc_homophily_p_value_M_glm_dispmod = homophily_significance[:,0][1]
+                #cc_homophily_p_value_M_glm = homophily_significance[:,0][0]
+                #cc_homophily_p_value_M_glm_dispmod = homophily_significance[:,0][1]
 
                 
                 ## compare with b0 terms
@@ -167,17 +167,17 @@ if __name__=="__main__":
                 prop_F = ''
                 chi_square_p_value_F = ''
                 chi_square_p_value_M = ''
-                cc_homophily_p_value_F_glm = ''
-                cc_homophily_p_value_M_glm = ''
-                cc_homophily_p_value_F_glm_dispmod = ''
-                cc_homophily_p_value_M_glm_dispmod = ''
+                #cc_homophily_p_value_F_glm = ''
+                #cc_homophily_p_value_M_glm = ''
+                #cc_homophily_p_value_F_glm_dispmod = ''
+                #cc_homophily_p_value_M_glm_dispmod = ''
     
             writer.writerow( (tag, raw_gender_F_undirected,raw_gender_M_undirected, raw_gender_unknown_undirected,
                               block_F, block_M,prop_F,
                               avg_deg_F, avg_deg_M,max_deg_F,max_deg_M,
                               obs_homophily_F, obs_homophily_M,
-                              cc_homophily_p_value_F_glm,cc_homophily_p_value_M_glm,
-                              cc_homophily_p_value_F_glm_dispmod, cc_homophily_p_value_M_glm_dispmod,
+                              #cc_homophily_p_value_F_glm,cc_homophily_p_value_M_glm,
+                              #cc_homophily_p_value_F_glm_dispmod, cc_homophily_p_value_M_glm_dispmod,
                               b0_glm_F,b0_dispmod_glm_F, b0_glm_M, b0_dispmod_glm_M,
                               obs_monophily_F,obs_monophily_M,
                               chi_square_p_value_F, chi_square_p_value_M))

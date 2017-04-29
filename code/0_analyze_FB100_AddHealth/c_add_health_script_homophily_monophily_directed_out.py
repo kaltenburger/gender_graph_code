@@ -8,7 +8,11 @@ from __future__ import division
 ## for reference: [Male == 1; Female == 2, Unreported/Missing = 0]
 ## codings are based on: http://moreno.ss.uci.edu/data.html#adhealth
 
-## run: cd [file path for code]; python add_health_script_homophily_monophily_directed_in.py -i='FILE PATH FOR converted_gml' -o='output path'
+
+## how to run:
+## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
+## python c_add_health_script_homophily_monophily_directed_out.py -i='/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml' -o='/Users/kristen/Documents/gender_graph_code/data/'
+
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter main folder directory
 
 
@@ -39,7 +43,7 @@ if __name__=="__main__":
     monophily_gender = []
 
     
-    file_output = open('../pnas_output_data/add_health_output_out_directed_links_homophily_monophily.csv', 'wt') # change file name to directed
+    file_output = open('../../data/add_health_output_out_directed_links_homophily_monophily.csv', 'wt') # change file name to directed
     j =0
     writer = csv.writer(file_output)
     writer.writerow( ('school', 'raw_F_count', 'raw_M_count', 'raw_?_count',
@@ -56,7 +60,7 @@ if __name__=="__main__":
                       
     os.chdir('/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml/')
     for f in listdir(args.input_dir):
-        if f.endswith(args.file_ext) and f!='comm27.gml':# and j<=10: #and f=='comm22.gml': #and f!='comm25.gml': #f=='comm10.gml':
+        if f.endswith(args.file_ext):# and f!='comm27.gml':
             tag = f.replace(args.file_ext, '')
             j=j+1
 
@@ -113,12 +117,12 @@ if __name__=="__main__":
                 obs_homophily_F = homophily_gender[1]   # F - important assumes F label < M label
                 obs_homophily_M = homophily_gender[0] # M - important assumes M label > F label
                 
-                homophily_significance = monophily_index_overdispersion_Williams_with_intercept_SE(adj_gender_out, ah_gender_out)
-                cc_homophily_p_value_F_glm = homophily_significance[:,1][0]
-                cc_homophily_p_value_F_glm_dispmod = homophily_significance[:,1][1]
+                #homophily_significance = monophily_index_overdispersion_Williams_with_intercept_SE(adj_gender_out, ah_gender_out)
+                #cc_homophily_p_value_F_glm = homophily_significance[:,1][0]
+                #cc_homophily_p_value_F_glm_dispmod = homophily_significance[:,1][1]
                 
-                cc_homophily_p_value_M_glm = homophily_significance[:,0][0]
-                cc_homophily_p_value_M_glm_dispmod = homophily_significance[:,0][1]
+                #cc_homophily_p_value_M_glm = homophily_significance[:,0][0]
+                #cc_homophily_p_value_M_glm_dispmod = homophily_significance[:,0][1]
 
 
                 
@@ -171,18 +175,18 @@ if __name__=="__main__":
                 prop_F = ''
                 chi_square_p_value_F= ''
                 chi_square_p_value_M = ''
-                cc_homophily_p_value_F_glm = ''
-                cc_homophily_p_value_M_glm = ''
-                cc_homophily_p_value_F_glm_dispmod = ''
-                cc_homophily_p_value_M_glm_dispmod = ''
+                #cc_homophily_p_value_F_glm = ''
+                #cc_homophily_p_value_M_glm = ''
+                #cc_homophily_p_value_F_glm_dispmod = ''
+                #cc_homophily_p_value_M_glm_dispmod = ''
             
 
             writer.writerow( (tag, raw_gender_F_undirected,raw_gender_M_undirected, raw_gender_unknown_undirected,
                   block_F, block_M,prop_F,
                   avg_deg_F, avg_deg_M,max_deg_F,max_deg_M,
                   obs_homophily_F, obs_homophily_M,
-                  cc_homophily_p_value_F_glm,cc_homophily_p_value_M_glm,
-                   cc_homophily_p_value_F_glm_dispmod, cc_homophily_p_value_M_glm_dispmod,
+                              #cc_homophily_p_value_F_glm,cc_homophily_p_value_M_glm,
+                              #cc_homophily_p_value_F_glm_dispmod, cc_homophily_p_value_M_glm_dispmod,
                   b0_glm_F,b0_dispmod_glm_F, b0_glm_M, b0_dispmod_glm_M,
                   obs_monophily_F,obs_monophily_M,
                   chi_square_p_value_F, chi_square_p_value_M))
