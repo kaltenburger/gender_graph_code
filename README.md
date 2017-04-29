@@ -2,7 +2,7 @@
 
 ### Documentation
 
-This repository contains all the correponding code to replicate the figures in "Bias and variance in the social structure of gender". We provide links to the datasets (Facebook100 and AddHealth) in the '/gender_graph_code/data' folder. 
+This repository contains all the correponding code to replicate the figures in "Bias and variance in the social structure of gender". We provide links to the datasets (Facebook100 and AddHealth) in the data sub-folder. 
 
 ### Authors
 * Kristen M. Altenburger, kaltenb@stanford.edu
