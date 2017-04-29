@@ -4,6 +4,10 @@ import os
 ## 4/24/2017
 ## about: compute 1-hop, 2-hop MV inference results when 50% of network is labeled
 
+## how to run:
+## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
+## python c_facebook_script_1MV_2MV_class_specific.py -i='/Users/kristen/Dropbox/gender_graph_data/manuscript/code/fb_processing/data' -o='/Users/kristen/Documents/gender_graph_code/data/'
+
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter local main folder
 
 os.chdir(folder_directory)
