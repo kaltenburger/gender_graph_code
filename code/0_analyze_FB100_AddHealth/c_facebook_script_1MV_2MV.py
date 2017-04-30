@@ -7,6 +7,10 @@ import os
 ## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
 ## python c_facebook_script_1MV_2MV.py -i='/Users/kristen/Dropbox/gender_graph_data/manuscript/code/fb_processing/data' -o='/Users/kristen/Documents/gender_graph_code/data/'
 
+## how to run on soal
+## python c_facebook_script_1MV_2MV.py -i='/home/kaltenb/gender-graph/data' -o='/home/kaltenb/gender-graph'
+
+
 import os
 folder_directory =os.getcwd()
 
@@ -17,8 +21,7 @@ execfile('../functions/compute_monophily.py')
 execfile('../functions/compute_chi_square.py')
 execfile('../functions/parsing.py')  # Sam Way's Code
 execfile('../functions/mixing.py')   # Sam Way's Code
-execfile('../functions/create_directed_adjacency_matrix.py')
-
+execfile('../functions/create_adjacency_matrix.py')
 execfile('../functions/majority_vote.py')
 
 
