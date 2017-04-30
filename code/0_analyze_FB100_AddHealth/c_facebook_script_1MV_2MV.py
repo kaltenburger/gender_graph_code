@@ -7,19 +7,21 @@ import os
 ## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
 ## python c_facebook_script_1MV_2MV.py -i='/Users/kristen/Dropbox/gender_graph_data/manuscript/code/fb_processing/data' -o='/Users/kristen/Documents/gender_graph_code/data/'
 
-
-folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter local main folder
+import os
+folder_directory =os.getcwd()
 
 os.chdir(folder_directory)
-execfile('python_libraries.py')
-execfile('create_adjacency_matrix.py')
-execfile('compute_homophily.py')
-execfile('compute_monophily.py')
-execfile('parsing.py')  # Sam Way's Code
-execfile('mixing.py')   # Sam Way's Code
-execfile('majority_vote.py')
+execfile('../functions/python_libraries.py')
+execfile('../functions/compute_homophily.py')
+execfile('../functions/compute_monophily.py')
+execfile('../functions/compute_chi_square.py')
+execfile('../functions/parsing.py')  # Sam Way's Code
+execfile('../functions/mixing.py')   # Sam Way's Code
+execfile('../functions/create_directed_adjacency_matrix.py')
 
-\
+execfile('../functions/majority_vote.py')
+
+
 
 
 def interface():
@@ -98,4 +100,3 @@ if __name__=="__main__":
 
     file_output.close()
     print "Done!"
-                
