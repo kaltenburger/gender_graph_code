@@ -1,9 +1,11 @@
-## created: 7/27/2016
-## edited/reran: 10/3/2016
 ## about: convert original Add Health CD Data from .paj format --> .gml format
 
 rm(list=ls())
-setwd("/Users/kristen/Dropbox/gender_graph_data/add-health/cd_data/structure_nocontract/")
+
+## note: user sets path to file location of raw add health data
+file_path_to_raw_add_health_data <-"/Users/kristen/Dropbox/gender_graph_data/add-health/cd_data/structure_nocontract/"
+
+setwd(file_path_to_raw_add_health_data)
 
 library(intergraph)
 library(network)
@@ -51,10 +53,9 @@ for(files in list.files()){
   for(j in 1:length(attributes)){
     g <- set.vertex.attribute(g, 
                   name = attributes[j],
-                  #index = attribute_df[,c('vertex.names')],  causing bug - now assuming vertex order is implicitly preserved 
                   value=c(attribute_df[,c(attributes[j])]))
   }
   
-  write.graph(g, file = paste0('../../converted_gml/', gsub(".paj", ".gml", files)),format = c('gml'))
+  write.graph(g, file = paste0('../../converted_gml/', gsub(".paj", ".gml", files)),format = c('gml')) ## user sets path to location of converted files
   detach("package:igraph", unload=TRUE)
 }
