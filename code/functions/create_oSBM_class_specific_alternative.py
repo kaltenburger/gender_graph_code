@@ -5,9 +5,6 @@ from __future__ import division
 ## note: assumes dispersion_val_vect is in the same order as the class [class1, class2] --> dispersion_val_vect = [dispersion_val_vect_1, dispersion_val_vect_2]
 ## simply put, the numeric ordering of the class determines the ordering of the
 
-## final general oSBM model with flexible class sizes -- & defined in terms of \phi, p_in, p_out
-
-
 
 def create_proportion_class_k_friends(adj_matrix, node_id,
                                      y_labels, k_class):
@@ -57,17 +54,13 @@ def out_class_matrix(matrix1,matrix2):
 def create_affiliation_model_temp(average_node_degree,
                                   lambda_block_parameter,
                                   dispersion_parameter_vect,
-                                  class_size_vect):#, num_classes):
-    
+                                  class_size_vect):
     N = np.sum(class_size_vect)
-    
     ### BLOCK STRUCTURE
     ## define p_in; p_out
     p_in = (lambda_block_parameter * average_node_degree)/N
     print 'p_in: ', p_in
-    
     #previous parameterization
-    #p_out = (average_node_degree - p_in * class_size)/((num_classes-1)*class_size)
     denominator = []
     for j in range(len(class_size_vect)):
         denominator.append(class_size_vect[j] * class_size_vect[~j])
@@ -91,9 +84,8 @@ def create_affiliation_model_temp(average_node_degree,
     expected_prob_matrix=np.zeros((N,N))
     for i in range(len(class_size_vect)):
         for j in range(len(class_size_vect)):
-            idx = np.sum(class_size_vect[0:i])#i * class_size_vect[j] #row
-            jdx = np.sum(class_size_vect[0:j])# j * class_size_vect[j] #column
-            #print expected_prob_matrix
+            idx = np.sum(class_size_vect[0:i])
+            jdx = np.sum(class_size_vect[0:j])
             if i==j:
                 expected_prob_matrix[idx:idx+class_size_vect[j],jdx:jdx+class_size_vect[j]] = in_class_matrix(in_class_list[j])/(class_size_vect[j]**2*p_in)
             else:
