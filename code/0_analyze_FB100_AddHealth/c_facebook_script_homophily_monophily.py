@@ -6,7 +6,8 @@ import os
 ## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
 ## python c_facebook_script_homophily_monophily.py -i='/Users/kristen/Dropbox/gender_graph_data/manuscript/code/fb_processing/data' -o='/Users/kristen/Documents/gender_graph_code/data/'
 
-
+## how to run on soal
+## python c_facebook_script_homophily_monophily.py -i='/home/kaltenb/gender-graph/data' -o='/home/kaltenb/gender-graph'
 
 import os
 folder_directory =os.getcwd()
