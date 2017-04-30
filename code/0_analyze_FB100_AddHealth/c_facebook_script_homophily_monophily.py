@@ -1,7 +1,5 @@
 from __future__ import division
 import os
-
-## 4/24/2017
 ## about: compute homophily/monophily across FB100 dataset
 
 ## how to run:
@@ -10,6 +8,8 @@ import os
 
 
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter local main folder
+
+
 os.chdir(folder_directory)
 execfile('python_libraries.py')
 execfile('create_adjacency_matrix.py')

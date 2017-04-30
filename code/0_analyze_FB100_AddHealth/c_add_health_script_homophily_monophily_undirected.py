@@ -1,6 +1,4 @@
 from __future__ import division
-
-## 4/24/2017
 ## about: process homophily/monophily across all Add Health Schools [in-directed]
 
 
@@ -10,6 +8,8 @@ from __future__ import division
 ## how to run:
 ## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
 ## python c_add_health_script_homophily_monophily_undirected.py -i='/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml' -o='/Users/kristen/Documents/gender_graph_code/data/'
+
+
 folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter main folder directory
 
 

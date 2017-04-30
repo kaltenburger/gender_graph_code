@@ -1,26 +1,25 @@
 from __future__ import division
 
-## 4/29/2017
 ## about: process homophily/monophily across all Add Health Schools [in-directed]
-
 
 ## for reference: [Male == 1; Female == 2, Unreported/Missing = 0]
 ## codings are based on: http://moreno.ss.uci.edu/data.html#adhealth
 
-## how to run:
+## how to run [example]:
 ## cd /Users/kristen/Documents/gender_graph_code/code/0_analyze_FB100_AddHealth/
 ## python c_add_health_script_homophily_monophily_directed_in.py -i='/Users/kristen/Dropbox/gender_graph_data/add-health/converted_gml' -o='/Users/kristen/Documents/gender_graph_code/data/'
-folder_directory = '/Users/kristen/Documents/gender_graph_code/code/functions' # enter main folder directory
 
 import os
+folder_directory =os.getcwd()
+
 os.chdir(folder_directory)
-execfile('python_libraries.py')
-execfile('compute_homophily.py')
-execfile('compute_monophily.py')
-execfile('compute_chi_square.py')
-execfile('parsing.py')  # Sam Way's Code
-execfile('mixing.py')   # Sam Way's Code
-execfile('create_directed_adjacency_matrix.py')
+execfile('../functions/python_libraries.py')
+execfile('../functions/compute_homophily.py')
+execfile('../functions/compute_monophily.py')
+execfile('../functions/compute_chi_square.py')
+execfile('../functions/parsing.py')  # Sam Way's Code
+execfile('../functions/mixing.py')   # Sam Way's Code
+execfile('../functions/create_directed_adjacency_matrix.py')
 
 def interface():
     args = argparse.ArgumentParser()
@@ -44,8 +43,6 @@ if __name__=="__main__":
                       'cc_F_count', 'cc_M_count', 'ratio_F',
                       'cc_average_degree_F', 'cc_average_degree_M','cc_max_deg_F','cc_max_deg_M',
                       'cc_homophily_F', 'cc_homophily_M',
-                      #'cc_homophily_p_value_glm_F','cc_homophily_p_value_glm_M',
-                      #'cc_homophily_p_value_dispmod_glm_F','cc_homophily_p_value_dispmod_glm_M',
                       'b0_glm_F','b0_dispmod_glm_F', 'b0_glm_M','b0_dispmod_glm_M',
                       'cc_monophily_F', 'cc_monophily_M',
                       'chi_square_p_value_F', 'chi_square_p_value_M'))
@@ -157,17 +154,12 @@ if __name__=="__main__":
                 prop_F = ''
                 chi_square_p_value_F= ''
                 chi_square_p_value_M = ''
-                #cc_homophily_p_value_F_glm = ''
-                #cc_homophily_p_value_M_glm = ''
-                #cc_homophily_p_value_F_glm_dispmod = ''
-                #cc_homophily_p_value_M_glm_dispmod = ''
+
 
             writer.writerow( (tag, raw_gender_F_undirected,raw_gender_M_undirected, raw_gender_unknown_undirected,
                   block_F, block_M,prop_F,
                   avg_deg_F, avg_deg_M,max_deg_F,max_deg_M,
                   obs_homophily_F, obs_homophily_M,
-                              #cc_homophily_p_value_F_glm,cc_homophily_p_value_M_glm,
-                              #cc_homophily_p_value_F_glm_dispmod, cc_homophily_p_value_M_glm_dispmod,
                   b0_glm_F,b0_dispmod_glm_F, b0_glm_M, b0_dispmod_glm_M,
                   obs_monophily_F,obs_monophily_M,
                   chi_square_p_value_F, chi_square_p_value_M))
