@@ -17,6 +17,8 @@ def create_proportion_class_k_friends(adj_matrix, node_id,
 
 
 
+
+
 def create_expected_degree_sequence(class_size_val,
                                     p_in_val, p_out_val,
                                     dispersion_val_in, dispersion_val_out):
