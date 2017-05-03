@@ -5,8 +5,8 @@
 
 This repository set-up assumes that the FB100 (raw .mat files) and Add Health datasets have been acquired and are saved the data/original folder. Here are the directions:
 
-    1) 
-    2)
+    1) Save raw files: save the FB100 .mat files in the data/original/fb_100/ folder and save the Add Health files in the data/original/add_health/cd folder.
+    2) 
 
 ### Documentation
 
