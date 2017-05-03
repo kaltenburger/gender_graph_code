@@ -36,7 +36,7 @@ if __name__=="__main__":
     homophily_gender = []
     monophily_gender = []
     
-    file_output = open('../../data/add_health_output_in_directed_links_homophily_monophily.csv', 'wt') # change file name to directed
+    file_output = open('../../data/output/add_health_output_in_directed_links_homophily_monophily.csv', 'wt') # change file name to directed
     j =0
     writer = csv.writer(file_output)
     writer.writerow( ('school', 'raw_F_count', 'raw_M_count', 'raw_?_count',

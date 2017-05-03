@@ -43,7 +43,7 @@ if __name__=="__main__":
     monophily_gender = []
 
     
-    file_output = open('../../data/facebook_output_majority_vote.csv', 'wt')
+    file_output = open('../../data/output/facebook_output_majority_vote.csv', 'wt')
     j =0
     writer = csv.writer(file_output)
     writer.writerow( ('school', 'percent_initially_unlabeled', '1_MV_gender_mean_auc_wt', '1_MV_gender_se_auc_wt', '2_MV_gender_mean_auc_wt', '2_MV_gender_se_auc_wt'))

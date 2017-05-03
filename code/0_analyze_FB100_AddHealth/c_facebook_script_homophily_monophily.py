@@ -36,7 +36,7 @@ if __name__=="__main__":
     homophily_gender = []
     monophily_gender = []
     
-    file_output = open('../../data/facebook_homophily_monophily_output_updated.csv', 'wt')
+    file_output = open('../../data/output/facebook_homophily_monophily_output_updated.csv', 'wt')
     j =0
     writer = csv.writer(file_output)
     writer.writerow( ('school', 'raw_F_count', 'raw_M_count', 'raw_?_count',
