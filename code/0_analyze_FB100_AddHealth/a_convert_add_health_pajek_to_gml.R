@@ -5,6 +5,7 @@ rm(list=ls())
 ## note: user sets path to file location of raw add health data
 file_path_to_raw_add_health_data <-"/Users/kristen/Dropbox/gender_graph_data/add-health/cd_data/structure_nocontract/"
 
+
 setwd(file_path_to_raw_add_health_data)
 
 library(intergraph)
