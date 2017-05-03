@@ -6,6 +6,7 @@
 This repository set-up assumes that the FB100 (raw .mat files) and Add Health datasets have been acquired and are saved the data/original folder. Here are the directions:
 
     1) 
+    2)
 
 ### Documentation
 
