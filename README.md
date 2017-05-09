@@ -1,5 +1,9 @@
 ## Replication code: "Bias and variance in the social structure of gender"
 
+### Documentation
+
+This repository contains all the correponding code to replicate the figures in "Bias and variance in the social structure of gender". We provide links to the datasets (Facebook100 and AddHealth) in the data sub-folder. 
+
 
 ### Directions
 
@@ -22,10 +26,6 @@ This repository set-up assumes that the FB100 (raw .mat files) and Add Health da
             - c_add_health_script* and c_facebook_script*: runs a script across the population of networks to compute homophily/monophily metrics and majority vote performance
             - d_All -- process all FB100 Schools and Add Health Schools.ipynb: reproduces population figures in main paper and SI corresponding to the script results that were run in c_*.
 
-
-### Documentation
-
-This repository contains all the correponding code to replicate the figures in "Bias and variance in the social structure of gender". We provide links to the datasets (Facebook100 and AddHealth) in the data sub-folder. 
 
 ### Authors
 * Kristen M. Altenburger, kaltenb@stanford.edu
