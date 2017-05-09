@@ -12,6 +12,7 @@ This repository set-up assumes that the FB100 (raw .mat files) and Add Health da
     2) Update file paths to your local directory settings in the following programs:
         * code/0_analyze_FB100_AddHealth/a_convert_add_health_pajek_to_gml.R - line 6
         * code/0_analyze_FB100_AddHealth/b_Case Study -- Amherst and AddHealth23 Figures.ipynb -- line 6, set fb_100 variable, and set add_health_file variable
+        * code/0_analyze_FB100_AddHealth/c_* -- line 51/line 56/line 54 in the add health scripts _in/_out/_undirected.py 
         * code/0_analyze_FB100_AddHealth/d_All -- process all FB100 Schools and Add Health Schools.ipynb - line 5, set fb_file variable, set Add Health path 
 
     3) Run code which is briefly described below:
