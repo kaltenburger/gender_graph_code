@@ -14,7 +14,10 @@ This repository set-up assumes that the FB100 (raw .mat files) and Add Health da
         * code/0_analyze_FB100_AddHealth/d_All -- process all FB100 Schools and Add Health Schools.ipynb - line 5, set fb_file variable, set Add Health path 
     3) Run code which is briefly described below:
         * 0_analyze_FB100_AddHealth/ - includes all relevant FB100 and Add Health processing
-            - a_convert_add_health_pajek_to_gml.R: 
+            - a_convert_add_health_pajek_to_gml.R: converts raw pajek CD files to gml files
+            - b_Case Study: reproduces Amherst College figures in main paper (Figure 1, Figure 3A), SI Figures on regularization and separation, and Add Health #23 figures in SI
+            - c_add_health_script* and c_facebook_script*: runs a script across the population of networks to compute homophily/monophily metrics and majority vote performance
+            - d_All -- process all FB100 Schools and Add Health Schools.ipynb: reproduces population figures in main paper and SI corresponding to the script results that were run in c_*.
 
 
 ### Documentation
