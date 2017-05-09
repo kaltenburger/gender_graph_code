@@ -117,7 +117,6 @@ if __name__=="__main__":
                 
 
                 b0_temp = np.exp(monophily_index_overdispersion_Williams_with_intercept(np.matrix(adj_matrix_gender), np.array(gender_y)))
-                #print b0_temp
                 b0_glm_F = (b0_temp/(1+b0_temp))[:,0][0] # F
                 b0_glm_M = (b0_temp/(1+b0_temp))[:,1][0] # M
 

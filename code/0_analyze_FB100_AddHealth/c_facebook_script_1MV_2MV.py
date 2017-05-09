@@ -55,7 +55,7 @@ if __name__=="__main__":
         if f.endswith(args.file_ext):
             tag = f.replace(args.file_ext, '')
             j=j+1
-            if j>=0:#(tag!='schools') and (tag!='Wellesley22') and (tag!='Smith60') and (tag!='Vassar85'):#and j<=2:
+            if j>=0:
                 print "Processing %s..." % tag
                 input_file = path_join(args.input_dir, f)
                 

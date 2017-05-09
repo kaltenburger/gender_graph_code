@@ -65,11 +65,11 @@ if __name__=="__main__":
             ah_graph = ah_graph_tmp.to_undirected()
  
             (ah_gender_undirected, adj_directed_gender_undirected) = create_adj_membership(ah_graph,
-                                                                                           nx.get_node_attributes(ah_graph, 'comm' + str(id[0]) +'sex'), ## fix for non-mutual links here
+                                                                                           nx.get_node_attributes(ah_graph, 'comm' + str(id[0]) +'sex'),
                                                                    0,
                                                                    'yes',
                                                                    0,
-                                                                   None, # change adjacency matrix type: out == out-link, in == in-link, any1 == undirected
+                                                                   None, 
                                                                    'gender')
         
 
