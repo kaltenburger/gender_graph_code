@@ -1,5 +1,7 @@
 ## 4/24/2017
 ## about: ZGL function
+
+#“Semi-Supervised Learning Using Gaussian Fields and Harmonic Functions”.  Xiaojin Zhu, Zoubin Ghahramani, John Lafferty. The Twentieth International Conference on Machine Learning (ICML-2003).
 ## note: helpful Matlab code that was adapted: http://pages.cs.wisc.edu/~jerryzhu/pub/harmonic_function.m
 
 
