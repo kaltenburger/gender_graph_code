@@ -1,6 +1,5 @@
 # 4/24/2017
 # KM Altenburger
-# about: Monophily = Var(d_F/d) for F and Var(d_M/d) for M
 # monophily_index: computes class-specific monophily measure
 # baseline_monophily_index: computes baseline class-specific monophily measure
 
