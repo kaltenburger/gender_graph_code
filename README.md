@@ -25,6 +25,7 @@ This repository set-up assumes that the FB100 (raw .mat files) and Add Health da
             - b_Case Study: reproduces Amherst College figures in main paper (Figure 1, Figure 3A), SI Figures on regularization and separation, and Add Health #23 figures in SI
             - c_add_health_script* and c_facebook_script*: runs a script across the population of networks to compute homophily/monophily metrics and majority vote performance
             - d_All -- process all FB100 Schools and Add Health Schools.ipynb: reproduces population figures in main paper and SI corresponding to the script results that were run in c_*.
+        * 1_oSBM/ - includes all relevant code for oSBM
 
 
 For the analysis of the FB100 and Add Health data, all random number generators have been deterministically seeded to produce persistent cross-validation folds and thereby consistent results when re-running the analysis. The code for generating random graphs (sampled from the overdispersed stochastic block model) is not deterministically seeded. 
