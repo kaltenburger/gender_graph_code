@@ -56,6 +56,6 @@ for(files in list.files()){
                   name = attributes[j],
                   value=c(attribute_df[,c(attributes[j])]))
   }
-  
+  #write.graph(g, file = paste0('/Users/kristen/Documents/gender_graph_code/data/original/add_health/converted_gml/', gsub(".paj", ".gml", files)),format = c('gml')) ## user sets path to location of converted files
   write.graph(g, file = paste0('../../converted_gml/', gsub(".paj", ".gml", files)),format = c('gml')) ## user sets path to location of converted files
 }
