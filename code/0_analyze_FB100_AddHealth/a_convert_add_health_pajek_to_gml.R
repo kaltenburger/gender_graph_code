@@ -1,31 +1,36 @@
 ## about: convert original Add Health CD Data from .paj format --> .gml format
+## note: The attribute field for "totalnoms" will be >= the out-degree in the school network
+## because according to the Feb. 2005/Codebook "Students could list friends who did not attend the same school or
+## sister school by using a special code. These included (a) friends who went to the same school
+## but who were not in the roster, (b) friends who attended the sister school but were not in the roster,
+## and (c) friends who did not attend either school. These “out-of-school” nominations cannot be linked
+## to other students in the school, and are thus treated as missing data here.
+## Out-of- school friends are included in the total number of nominations made by each student."
 
 rm(list=ls())
 
 ## note: user sets path to file location of raw add health data
 file_path_to_raw_add_health_data <-"/Users/kristen/Dropbox/gender_graph_data/add-health/cd_data/structure_nocontract/"
-
-
 setwd(file_path_to_raw_add_health_data)
 
 library(intergraph)
 library(network)
+library(igraph)
 
 
 for(files in list.files()){
   print(files)
   file_num <- as.numeric(gsub(".paj","",gsub("comm", "", files))) ## get file name number
-  library(network)
   comm <- read.paj(files) ## read in file
 
   ## first get node attributes
   attributes <- c(names(comm$partitions)) # get names of all possible attributes which may vary
 
   # create data frame of vertex id + attributes
-  attribute_df <- data.frame("vertex.names" =( c(get.vertex.attribute(comm$networks[[1]], 
+  attribute_df <- data.frame("vertex.names" =( c(network::get.vertex.attribute(comm$networks[[1]],
                                                                       'vertex.names'))))
   ## check for duplicate node IDs
-  if(anyDuplicated(c(as.integer( c(get.vertex.attribute(comm$networks[[1]], 'vertex.names'))))) > 0){
+  if(anyDuplicated(c(as.integer( c(network::get.vertex.attribute(comm$networks[[1]], 'vertex.names'))))) > 0){
     print('error: duplicated node IDs')
   }
 
@@ -41,22 +46,16 @@ for(files in list.files()){
   ## refs: https://cran.r-project.org/web/packages/intergraph/vignettes/howto.html 
   ## in particular the "Handling attributes" section since igraph/network store them differently
   
-  library(network)
-  library(intergraph)
-  
-  g <- asIgraph(comm$networks[[1]])
-  library(intergraph)
-  detach("package:intergraph", unload=TRUE)
-  detach("package:network", unload=TRUE)
-  library(igraph)
+
+  g <- intergraph::asIgraph(comm$networks[[1]])
 
   ## attach node attribute data.frame to graph object g
   for(j in 1:length(attributes)){
-    g <- set.vertex.attribute(g, 
+    g <- igraph::set.vertex.attribute(g,
+                    index = as.integer(as.character(attribute_df[,c('vertex.names')])),
                   name = attributes[j],
                   value=c(attribute_df[,c(attributes[j])]))
   }
   
   write.graph(g, file = paste0('../../converted_gml/', gsub(".paj", ".gml", files)),format = c('gml')) ## user sets path to location of converted files
-  detach("package:igraph", unload=TRUE)
 }
