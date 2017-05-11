@@ -52,10 +52,12 @@ for(files in list.files()){
   ## attach node attribute data.frame to graph object g
   for(j in 1:length(attributes)){
     g <- igraph::set.vertex.attribute(g,
-                    index = as.integer(as.character(attribute_df[,c('vertex.names')])),
+                  index = as.integer(as.character(attribute_df[,c('vertex.names')])), # since vertex.names is a factor object in R - we have to first convert to character type, and then to an integer
                   name = attributes[j],
                   value=c(attribute_df[,c(attributes[j])]))
   }
-  #write.graph(g, file = paste0('/Users/kristen/Documents/gender_graph_code/data/original/add_health/converted_gml/', gsub(".paj", ".gml", files)),format = c('gml')) ## user sets path to location of converted files
-  write.graph(g, file = paste0('../../converted_gml/', gsub(".paj", ".gml", files)),format = c('gml')) ## user sets path to location of converted files
+  g <- igraph::delete_vertex_attr(g, 'na')
+  g <- igraph::delete_edge_attr(g, 'na')
+  write.graph(g, file = paste0('/Users/kristen/Documents/gender_graph_code/data/original/add_health/converted_gml/', gsub(".paj", ".gml", files)),format = c('gml')) ## user sets path to location of converted files
+  #write.graph(g, file = paste0('../../converted_gml/', gsub(".paj", ".gml", files)),format = c('gml')) ## user sets path to location of converted files
 }
